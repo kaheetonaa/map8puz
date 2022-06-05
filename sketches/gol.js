@@ -36,11 +36,10 @@ function draw() {
     inversion = getInvCount(puzzle_array.filter((element) => element > 0));
   }
   pos0 = puzzle_array.findIndex((element) => element < 1);
-  dist0 = dist(decode(pos0)[0], decode(pos0)[1], mx, my);
+  
   clear();
   //image(img[0], 0, 0, 300, 300);
   textSize(30);
-  mouse_to_pos();
   puzzle_draw();
   check_win();
   //circle(mouseX, mouseY, 20);
@@ -86,7 +85,8 @@ function mouse_to_pos() {
 }
 
 function touchStarted() {
-
+  mouse_to_pos();
+  dist0 = dist(decode(pos0)[0], decode(pos0)[1], mx, my);
   if (control && start) {
     if (dist0 == 1) {
       puzzle_array[pos0] = puzzle_array[mpos];
