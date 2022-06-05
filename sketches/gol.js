@@ -17,7 +17,7 @@ function preload() {
 }
 
 function setup() {
-  frameRate(10);
+  frameRate(12);
   pos0 = puzzle_array.findIndex((element) => element < 1);
   let mouse_pos = [0, 0, 0, 0, 0, 0, 0, 0, 0];
   createCanvas(windowWidth, windowHeight);
@@ -28,6 +28,7 @@ function setup() {
 }
 
 function draw() {
+  print(dist0)
   if (inversion % 2 == 0) {
     start = true;
   } else {
@@ -44,10 +45,6 @@ function draw() {
   check_win();
   //circle(mouseX, mouseY, 20);
 
-  let fps = frameRate();
-fill(255);
-stroke(0);
-text("FPS: " + fps.toFixed(2), 10, height - 10);
 }
 
 function puzzle_draw() {
@@ -90,7 +87,7 @@ function mouse_to_pos() {
 
 function touchStarted() {
   if (control && start) {
-    if (dist0 <= 1 && puzzle_array[mpos] != 0) {
+    if (dist0 == 1 && puzzle_array[mpos] != 0) {
       puzzle_array[pos0] = puzzle_array[mpos];
       puzzle_array[mpos] = 0;
     }
