@@ -84,7 +84,7 @@ function mouse_to_pos() {
   mpos = my * 3 + mx;
 }
 
-function touchStarted() {
+function mousePressed() {
   mouse_to_pos();
   dist0 = dist(decode(pos0)[0], decode(pos0)[1], mx, my);
   if (control && start) {
