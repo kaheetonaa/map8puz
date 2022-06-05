@@ -4,6 +4,7 @@ let puzzle_array = [...Array(9).keys()];
 let control = true;
 let start = false;
 let inversion;
+let dim;
 
 //https://services.digitalglobe.com/earthservice/tmsaccess/tms/1.0.0/DigitalGlobe:ImageryTileService@EPSG:3857@jpg/19/275635/336717.jpg?connectId=c2cbd3f2-003a-46ec-9e46-26a3996d6484
 
@@ -14,7 +15,10 @@ function preload() {
 function setup() {
   pos0 = puzzle_array.findIndex((element) => element < 1);
   let mouse_pos = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-  createCanvas(300, 300);
+  createCanvas(displayWidth, displayHeight);
+  dim= Math.min(displayWidth,displayHeight);
+  dim=dim- dim%3;
+  print(displayWidth, displayHeight);
   puzzle_array = shuffle(puzzle_array);
   inversion=getInvCount(puzzle_array.filter((element) => element > 0));
 }
@@ -22,7 +26,6 @@ function setup() {
 function draw() {
   if (inversion % 2 == 0) {
     start=true;
-    console.log(inversion);
   } else {
     puzzle_array = shuffle(puzzle_array);
     inversion=getInvCount(puzzle_array.filter((element) => element > 0));
@@ -39,12 +42,12 @@ function draw() {
 }
 
 function puzzle_draw() {
-  let dis = 100;
+  let dis = dim/3;
   let dis_int = 5;
   for (let i=0; i<9;i++) {
     
     image(img[puzzle_array[i]], decode(i)[0]* dis+dis_int, decode(i)[1]* dis+dis_int, dis-dis_int, dis-dis_int);
-    //text(puzzle_array[i], decode(i)[0] * dis + dis_int, decode(i)[1] * dis + dis_int);
+    text(puzzle_array[i], decode(i)[0] * dis + dis_int, decode(i)[1] * dis + dis_int);
   }
 
 }
@@ -57,9 +60,9 @@ function decode(number) {
 }
 
 function mouse_to_pos() {
-  if (mouseX <= 300 && mouseY <= 300 && mouseX >= 0 && mouseY >= 0) {
-    mx = floor(mouseX / 100);
-    my = floor(mouseY / 100);
+  if (mouseX <= dim && mouseY <= dim && mouseX >= 0 && mouseY >= 0) {
+    mx = floor(mouseX*3 / dim);
+    my = floor(mouseY*3 / dim);
   }
   if (mouseX < 0) {
     mx = 0;
@@ -67,16 +70,16 @@ function mouse_to_pos() {
   if (mouseY < 0) {
     my = 0;
   }
-  if (mouseX > 300) {
+  if (mouseX > dim) {
     mx = 2;
   }
-  if (mouseY > 300) {
+  if (mouseY > dim) {
     my = 2;
   }
   mpos = my * 3 + mx;
 }
 
-function mousePressed() {
+function touchStarted() {
   if (control && start) {
   if (dist0 <= 1 && puzzle_array[mpos] != 0) {
     puzzle_array[pos0] = puzzle_array[mpos];
