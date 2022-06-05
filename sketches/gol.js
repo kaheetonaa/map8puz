@@ -1,3 +1,4 @@
+p5.disableFriendlyErrors = true; // disables FES
 let mx = 0, my = 0, mpos = 0;
 let pos0, dist0;
 let puzzle_array = [...Array(9).keys()];
@@ -16,6 +17,7 @@ function preload() {
 }
 
 function setup() {
+  frameRate(10);
   pos0 = puzzle_array.findIndex((element) => element < 1);
   let mouse_pos = [0, 0, 0, 0, 0, 0, 0, 0, 0];
   createCanvas(windowWidth, windowHeight);
