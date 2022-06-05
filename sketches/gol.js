@@ -28,7 +28,7 @@ function setup() {
 }
 
 function draw() {
-  print(dist0)
+  print(puzzle_array)
   if (inversion % 2 == 0) {
     start = true;
   } else {
@@ -36,7 +36,6 @@ function draw() {
     inversion = getInvCount(puzzle_array.filter((element) => element > 0));
   }
   pos0 = puzzle_array.findIndex((element) => element < 1);
-  
   clear();
   //image(img[0], 0, 0, 300, 300);
   textSize(30);
@@ -87,11 +86,9 @@ function mouse_to_pos() {
 function mousePressed() {
   mouse_to_pos();
   dist0 = dist(decode(pos0)[0], decode(pos0)[1], mx, my);
-  if (control && start) {
-    if (dist0 == 1) {
+  if (control && start && dist0 == 1 && puzzle_array[mpos]!=0) {
       puzzle_array[pos0] = puzzle_array[mpos];
       puzzle_array[mpos] = 0;
-    }
   }
 }
 
