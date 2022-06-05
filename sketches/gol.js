@@ -15,8 +15,8 @@ function preload() {
 function setup() {
   pos0 = puzzle_array.findIndex((element) => element < 1);
   let mouse_pos = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-  createCanvas(600, 600);
-  dim=600;
+  createCanvas(windowWidth, windowHeight);
+  dim=min([windowWidth,windowHeight]);
   print(displayWidth, displayHeight);
   puzzle_array = shuffle(puzzle_array);
   inversion=getInvCount(puzzle_array.filter((element) => element > 0));
