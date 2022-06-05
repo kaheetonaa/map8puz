@@ -28,6 +28,7 @@ function setup() {
 }
 
 function draw() {
+  print(dist0)
   if (inversion % 2 == 0) {
     start = true;
   } else {
@@ -84,9 +85,10 @@ function mouse_to_pos() {
   mpos = my * 3 + mx;
 }
 
-function mousePressed() {
+function touchStarted() {
+
   if (control && start) {
-    if (dist0 == 1 && puzzle_array[mpos] != 0) {
+    if (dist0 == 1) {
       puzzle_array[pos0] = puzzle_array[mpos];
       puzzle_array[mpos] = 0;
     }
