@@ -15,9 +15,8 @@ function preload() {
 function setup() {
   pos0 = puzzle_array.findIndex((element) => element < 1);
   let mouse_pos = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-  createCanvas(Math.min(displayWidth,displayHeight), Math.min(displayWidth,displayHeight));
-  dim= Math.min(displayWidth,displayHeight);
-  dim=dim- dim%3;
+  createCanvas(600, 600);
+  dim=600;
   print(displayWidth, displayHeight);
   puzzle_array = shuffle(puzzle_array);
   inversion=getInvCount(puzzle_array.filter((element) => element > 0));
@@ -47,7 +46,7 @@ function puzzle_draw() {
   for (let i=0; i<9;i++) {
     
     image(img[puzzle_array[i]], decode(i)[0]* dis+dis_int, decode(i)[1]* dis+dis_int, dis-dis_int, dis-dis_int);
-    text(puzzle_array[i], decode(i)[0] * dis + dis_int, decode(i)[1] * dis + dis_int);
+    //text(puzzle_array[i], decode(i)[0] * dis + dis_int, decode(i)[1] * dis + dis_int);
   }
 
 }
