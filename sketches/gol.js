@@ -35,9 +35,9 @@ function draw() {
   //image(img[0], 0, 0, 300, 300);
   textSize(30);
   mouse_to_pos();
-  check_win();
   puzzle_draw();
-  circle(mouseX, mouseY, 20);
+  check_win();
+  //circle(mouseX, mouseY, 20);
 }
 
 function puzzle_draw() {
