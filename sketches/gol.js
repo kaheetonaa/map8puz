@@ -15,7 +15,7 @@ function preload() {
 function setup() {
   pos0 = puzzle_array.findIndex((element) => element < 1);
   let mouse_pos = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-  createCanvas(displayWidth, displayHeight);
+  createCanvas(Math.min(displayWidth,displayHeight), Math.min(displayWidth,displayHeight));
   dim= Math.min(displayWidth,displayHeight);
   dim=dim- dim%3;
   print(displayWidth, displayHeight);
