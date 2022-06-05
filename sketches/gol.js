@@ -8,7 +8,7 @@ let inversion;
 //https://services.digitalglobe.com/earthservice/tmsaccess/tms/1.0.0/DigitalGlobe:ImageryTileService@EPSG:3857@jpg/19/275635/336717.jpg?connectId=c2cbd3f2-003a-46ec-9e46-26a3996d6484
 
 function preload() {
-  img = [loadImage('images/00.png'),loadImage('https://tile.openstreetmap.org/19/275637/187568.png'),loadImage('https://tile.openstreetmap.org/19/275638/187568.png'),loadImage('https://tile.openstreetmap.org/19/275636/187569.png'),loadImage('https://tile.openstreetmap.org/19/275637/187569.png'),loadImage('https://tile.openstreetmap.org/19/275638/187569.png'),loadImage('https://tile.openstreetmap.org/19/275636/187570.png'),loadImage('https://tile.openstreetmap.org/19/275637/187570.png'),loadImage('https://tile.openstreetmap.org/19/275638/187570.png')];
+  img = [loadImage('https://raw.githubusercontent.com/kaheetonaa/map8puz/main/images/00.png'),loadImage('https://tile.openstreetmap.org/19/275637/187568.png'),loadImage('https://tile.openstreetmap.org/19/275638/187568.png'),loadImage('https://tile.openstreetmap.org/19/275636/187569.png'),loadImage('https://tile.openstreetmap.org/19/275637/187569.png'),loadImage('https://tile.openstreetmap.org/19/275638/187569.png'),loadImage('https://tile.openstreetmap.org/19/275636/187570.png'),loadImage('https://tile.openstreetmap.org/19/275637/187570.png'),loadImage('https://tile.openstreetmap.org/19/275638/187570.png')];
 }
 
 function setup() {
@@ -32,18 +32,18 @@ function draw() {
   clear();
   //image(img[0], 0, 0, 300, 300);
   textSize(30);
-  circle(mouseX, mouseY, 20);
   mouse_to_pos();
   check_win();
   puzzle_draw();
+  circle(mouseX, mouseY, 20);
 }
 
 function puzzle_draw() {
   let dis = 100;
-  let dis_int = 50;
+  let dis_int = 5;
   for (let i=0; i<9;i++) {
     
-    image(img[puzzle_array[i]], decode(i)[0]* dis, decode(i)[1]* dis, 100, 100);
+    image(img[puzzle_array[i]], decode(i)[0]* dis+dis_int, decode(i)[1]* dis+dis_int, dis-dis_int, dis-dis_int);
     //text(puzzle_array[i], decode(i)[0] * dis + dis_int, decode(i)[1] * dis + dis_int);
   }
 
