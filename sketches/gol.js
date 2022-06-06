@@ -35,9 +35,9 @@ function setup() {
   frameRate(12);
   pos0 = puzzle_array.findIndex((element) => element < 1);
   let mouse_pos = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-  createCanvas(windowWidth, windowHeight);
-  dim = min([windowWidth, windowHeight]);
   
+  dim = min([windowWidth, windowHeight]);
+  createCanvas(dim, dim);
   puzzle_array = shuffle(puzzle_array);
   inversion = getInvCount(puzzle_array.filter((element) => element > 0));
 }
