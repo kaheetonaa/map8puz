@@ -16,8 +16,8 @@ function preload() {
   let tilex = params.x;
   let tiley = params.y;
   let tilez = params.z;
-  for (let tx = parseInt(tilex); tx < parseInt(tilex) + 3; tx++) {
-    for (let ty = parseInt(tiley); ty < parseInt(tiley) + 3; ty++) {
+  for (let ty = parseInt(tiley); ty < parseInt(tiley) + 3; ty++) {
+    for (let tx = parseInt(tilex); tx < parseInt(tilex) + 3; tx++) {
       img.push(loadImage('https://tile.openstreetmap.org/' + tilez + '/' + tx + '/' + ty + '.png'))
       sat_img.push(loadImage('https://services.digitalglobe.com/earthservice/tmsaccess/tms/1.0.0/DigitalGlobe:ImageryTileService@EPSG:3857@jpg/' + tilez + '/' + tx + '/' + ty + '.jpg?connectId=c2cbd3f2-003a-46ec-9e46-26a3996d6484&flipy=true'))
     }
@@ -36,20 +36,19 @@ function setup() {
   let mouse_pos = [0, 0, 0, 0, 0, 0, 0, 0, 0];
   createCanvas(windowWidth, windowHeight);
   dim = min([windowWidth, windowHeight]);
-  print(displayWidth, displayHeight);
+  
   puzzle_array = shuffle(puzzle_array);
   inversion = getInvCount(puzzle_array.filter((element) => element > 0));
 }
 
 function draw() {
-  print(puzzle_array)
+  
   if (inversion % 2 == 0) {
     start = true;
   } else {
     puzzle_array = shuffle(puzzle_array);
     inversion = getInvCount(puzzle_array.filter((element) => element > 0));
   }
-  print(inversion)
   pos0 = puzzle_array.findIndex((element) => element < 1);
   clear();
   //image(img[0], 0, 0, 300, 300);
