@@ -43,7 +43,6 @@ function setup() {
 }
 
 function draw() {
-  print (frameCount,timer);
   if (frameCount % 12 == 0 && control) { // if the frameCount is divisible by 60, then a second has passed. it will stop at 0
     timer ++;
   }
