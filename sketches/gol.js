@@ -6,14 +6,28 @@ let control = true;
 let start = false;
 let inversion;
 let dim;
-
+var img = [];
+var sat_img = [];
 //https://services.digitalglobe.com/earthservice/tmsaccess/tms/1.0.0/DigitalGlobe:ImageryTileService@EPSG:3857@jpg/19/275635/336717.jpg?connectId=c2cbd3f2-003a-46ec-9e46-26a3996d6484
 
 function preload() {
+  
   let params = getURLParams();
-  console.log(params.x);
-  console.log(params.y);
-  img = [loadImage('https://raw.githubusercontent.com/kaheetonaa/map8puz/main/images/00.png'), loadImage('https://tile.openstreetmap.org/19/275637/187568.png'), loadImage('https://tile.openstreetmap.org/19/275638/187568.png'), loadImage('https://tile.openstreetmap.org/19/275636/187569.png'), loadImage('https://tile.openstreetmap.org/19/275637/187569.png'), loadImage('https://tile.openstreetmap.org/19/275638/187569.png'), loadImage('https://tile.openstreetmap.org/19/275636/187570.png'), loadImage('https://tile.openstreetmap.org/19/275637/187570.png'), loadImage('https://tile.openstreetmap.org/19/275638/187570.png')];
+  let tilex = params.x;
+  let tiley = params.y;
+  let tilez = params.z;
+  for (let tx = parseInt(tilex); tx < parseInt(tilex) + 3; tx++) {
+    for (let ty = parseInt(tiley); ty < parseInt(tiley) + 3; ty++) {
+      img.push(loadImage('https://tile.openstreetmap.org/' + tilez + '/' + tx + '/' + ty + '.png'))
+      sat_img.push(loadImage('https://services.digitalglobe.com/earthservice/tmsaccess/tms/1.0.0/DigitalGlobe:ImageryTileService@EPSG:3857@jpg/' + tilez + '/' + tx + '/' + ty + '.jpg?connectId=c2cbd3f2-003a-46ec-9e46-26a3996d6484&flipy=true'))
+    }
+  }
+
+
+  //https://services.digitalglobe.com/earthservice/tmsaccess/tms/1.0.0/DigitalGlobe:ImageryTileService@EPSG:3857@jpg/{z}/{x}/{y}.jpg?connectId=c2cbd3f2-003a-46ec-9e46-26a3996d6484&flipy=true
+  img[0]=loadImage('https://raw.githubusercontent.com/kaheetonaa/map8puz/main/images/00.png');
+
+  //img = [loadImage('https://raw.githubusercontent.com/kaheetonaa/map8puz/main/images/00.png'), loadImage('https://tile.openstreetmap.org/19/275637/187568.png'), loadImage('https://tile.openstreetmap.org/19/275638/187568.png'), loadImage('https://tile.openstreetmap.org/19/275636/187569.png'), loadImage('https://tile.openstreetmap.org/19/275637/187569.png'), loadImage('https://tile.openstreetmap.org/19/275638/187569.png'), loadImage('https://tile.openstreetmap.org/19/275636/187570.png'), loadImage('https://tile.openstreetmap.org/19/275637/187570.png'), loadImage('https://tile.openstreetmap.org/19/275638/187570.png')];
 }
 
 function setup() {
@@ -47,13 +61,15 @@ function draw() {
 
 function puzzle_draw() {
   let dis = dim / 3;
-  let dis_int = 5;
+  let dis_int = dis/10;
+  tint(255,127);
+  image(sat_img[pos0], decode(pos0)[0] * dis + dis_int, decode(pos0)[1] * dis + dis_int, dis - dis_int, dis - dis_int)
+  tint(255,255);
   for (let i = 0; i < 9; i++) {
 
     image(img[puzzle_array[i]], decode(i)[0] * dis + dis_int, decode(i)[1] * dis + dis_int, dis - dis_int, dis - dis_int);
     //text(puzzle_array[i], decode(i)[0] * dis + dis_int, decode(i)[1] * dis + dis_int);
   }
-
 }
 
 function decode(number) {
@@ -86,9 +102,9 @@ function mouse_to_pos() {
 function mousePressed() {
   mouse_to_pos();
   dist0 = dist(decode(pos0)[0], decode(pos0)[1], mx, my);
-  if (control && start && dist0 == 1 && puzzle_array[mpos]!=0) {
-      puzzle_array[pos0] = puzzle_array[mpos];
-      puzzle_array[mpos] = 0;
+  if (control && start && dist0 == 1 && puzzle_array[mpos] != 0) {
+    puzzle_array[pos0] = puzzle_array[mpos];
+    puzzle_array[mpos] = 0;
   }
 }
 
