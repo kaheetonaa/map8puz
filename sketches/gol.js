@@ -8,6 +8,7 @@ let inversion;
 let dim;
 var img = [];
 var sat_img = [];
+let timer = 0;
 //https://services.digitalglobe.com/earthservice/tmsaccess/tms/1.0.0/DigitalGlobe:ImageryTileService@EPSG:3857@jpg/19/275635/336717.jpg?connectId=c2cbd3f2-003a-46ec-9e46-26a3996d6484
 
 function preload() {
@@ -42,7 +43,10 @@ function setup() {
 }
 
 function draw() {
-  
+  print (frameCount,timer);
+  if (frameCount % 12 == 0 && control) { // if the frameCount is divisible by 60, then a second has passed. it will stop at 0
+    timer ++;
+  }
   if (inversion % 2 == 0) {
     start = true;
   } else {
@@ -111,7 +115,9 @@ function mousePressed() {
 function check_win() {
   if (getInvCount(puzzle_array.filter((element) => element > 0)) == 0 && pos0 == 0) {
     control = false;
-    text('win', 50, 50);
+    textSize(dim/30)
+    fill(255)
+    text('You win in '+timer+' second!', dim/12, dim/9,2*dim/12,5*dim/12);
   }
 }
 
