@@ -49,6 +49,7 @@ function draw() {
     puzzle_array = shuffle(puzzle_array);
     inversion = getInvCount(puzzle_array.filter((element) => element > 0));
   }
+  print(inversion)
   pos0 = puzzle_array.findIndex((element) => element < 1);
   clear();
   //image(img[0], 0, 0, 300, 300);
@@ -61,10 +62,10 @@ function draw() {
 
 function puzzle_draw() {
   let dis = dim / 3;
-  let dis_int = dis/10;
-  tint(255,127);
+  let dis_int = dis/20;
+  //tint(255,127);
   image(sat_img[pos0], decode(pos0)[0] * dis + dis_int, decode(pos0)[1] * dis + dis_int, dis - dis_int, dis - dis_int)
-  tint(255,255);
+  //tint(255,255);
   for (let i = 0; i < 9; i++) {
 
     image(img[puzzle_array[i]], decode(i)[0] * dis + dis_int, decode(i)[1] * dis + dis_int, dis - dis_int, dis - dis_int);
