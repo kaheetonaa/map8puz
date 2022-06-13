@@ -21,7 +21,7 @@ function preload() {
 
 function setup() {
     frameRate(12);
-    dim = min([windowWidth, windowHeight])-60;
+    dim = min([windowWidth, windowHeight]);
     createCanvas(dim, dim);
 }
 
