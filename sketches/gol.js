@@ -20,8 +20,8 @@ let twitter,facebook,linkedin
 function preload() {
   challenge = loadTable('https://raw.githubusercontent.com/kaheetonaa/map8puz/main/challenge.csv', 'csv','header');
   twitter= loadImage("https://raw.githubusercontent.com/kaheetonaa/map8puz/main/images/twitter.png")
-  facebook=loadImage("https://raw.githubusercontent.com/kaheetonaa/map8puz/main/images/twitter.png")
-  linkedin=loadImage("https://raw.githubusercontent.com/kaheetonaa/map8puz/main/images/twitter.png")
+  facebook=loadImage("https://raw.githubusercontent.com/kaheetonaa/map8puz/main/images/facebook.png")
+  linkedin=loadImage("https://raw.githubusercontent.com/kaheetonaa/map8puz/main/images/linkedin.png")
 
 
   //img = [loadImage('https://raw.githubusercontent.com/kaheetonaa/map8puz/main/images/00.png'), loadImage('https://tile.openstreetmap.org/19/275637/187568.png'), loadImage('https://tile.openstreetmap.org/19/275638/187568.png'), loadImage('https://tile.openstreetmap.org/19/275636/187569.png'), loadImage('https://tile.openstreetmap.org/19/275637/187569.png'), loadImage('https://tile.openstreetmap.org/19/275638/187569.png'), loadImage('https://tile.openstreetmap.org/19/275636/187570.png'), loadImage('https://tile.openstreetmap.org/19/275637/187570.png'), loadImage('https://tile.openstreetmap.org/19/275638/187570.png')];
@@ -128,15 +128,15 @@ function mousePressed() {
   if (win) {
     //open twitter
     if ((mouseX > 0 * dis + dis_int) && (mouseX < 1 * dis + dis_int) &&
-      (mouseY > 1 * dis + dis_int) && (mouseY < 2 * dis + dis_int)) {
-      window.open("https://twitter.com/intent/tweet?text=I%27ve%20just%20win%20Map8puz%20challenge%23"+params.challenge+"%20in%20only%20" + timer + "second%21%20Challenge%20yourself%20at%3A%20https%3A%2F%2Fkaheetonaa.github.io%2Fmap8puz%2Findex.html%3Fx%3D17583%26y%3D13209%26z%3D15.%20Challenge%20constributed%20by%20%40"+challenge.get(params.challenge,4));
+      (mouseY > 2 * dis + dis_int) && (mouseY < 3 * dis + dis_int)) {
+      window.open("https://twitter.com/intent/tweet?text=I%27ve%20just%20win%20Map8puz%20challenge%23"+params.challenge+"%20in%20only%20" + timer + "second%21%20Challenge%20yourself%20at%3A%20https%3A%2F%2Fkaheetonaa.github.io%2Fmap8puz%2Findex.html%3Fx%3D17583%26y%3D13209%26z%3D15.%20Challenge%20contributed%20by%20%40"+challenge.get(params.challenge,4));
     }
     if ((mouseX > 1 * dis + dis_int) && (mouseX < 2 * dis + dis_int) &&
-      (mouseY > 1 * dis + dis_int) && (mouseY < 2 * dis + dis_int)) {
+      (mouseY > 2 * dis + dis_int) && (mouseY < 3 * dis + dis_int)) {
       window.open("https://www.facebook.com/dialog/share?app_id=366818085567559&href=https%3A%2F%2Fkaheetonaa.github.io%2Fmap8puz%2Findex.html%3Fx%3D17583%26y%3D13209%26z%3D15");
     }
     if ((mouseX > 2 * dis + dis_int) && (mouseX < 3 * dis + dis_int) &&
-      (mouseY > 1 * dis + dis_int) && (mouseY < 2 * dis + dis_int)) {
+      (mouseY > 2 * dis + dis_int) && (mouseY < 3 * dis + dis_int)) {
       window.open("https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fkaheetonaa.github.io%2Fmap8puz%2Findex.html%3Fx%3D17583%26y%3D13209%26z%3D15");
     }
     //
@@ -146,7 +146,9 @@ function mousePressed() {
 function check_win() {
 
   if (getInvCount(puzzle_array.filter((element) => element > 0)) == 0 && pos0 == 0) {
-    image(twitter, 0 * dis + dis_int,1 * dis + dis_int,dis-dis_int*2,dis-dis_int*2)
+    image(twitter, 0 * dis + dis_int,2 * dis + dis_int,dis-dis_int,dis-dis_int)
+    image(facebook, 1 * dis + dis_int,2 * dis + dis_int,dis-dis_int,dis-dis_int)
+    image(linkedin, 2 * dis + dis_int,2 * dis + dis_int,dis-dis_int,dis-dis_int)
     win = true
     control = false;
     textSize(dim / 30)
