@@ -13,11 +13,15 @@ let timer = 0;
 var dis, dis_int;
 let challenge
 let params
+let twitter,facebook,linkedin
 
 //https://services.digitalglobe.com/earthservice/tmsaccess/tms/1.0.0/DigitalGlobe:ImageryTileService@EPSG:3857@jpg/19/275635/336717.jpg?connectId=c2cbd3f2-003a-46ec-9e46-26a3996d6484
 
 function preload() {
   challenge = loadTable('https://raw.githubusercontent.com/kaheetonaa/map8puz/main/challenge.csv', 'csv','header');
+  twitter= loadImage("https://raw.githubusercontent.com/kaheetonaa/map8puz/main/images/twitter.png")
+  facebook=loadImage("https://raw.githubusercontent.com/kaheetonaa/map8puz/main/images/twitter.png")
+  linkedin=loadImage("https://raw.githubusercontent.com/kaheetonaa/map8puz/main/images/twitter.png")
 
 
   //img = [loadImage('https://raw.githubusercontent.com/kaheetonaa/map8puz/main/images/00.png'), loadImage('https://tile.openstreetmap.org/19/275637/187568.png'), loadImage('https://tile.openstreetmap.org/19/275638/187568.png'), loadImage('https://tile.openstreetmap.org/19/275636/187569.png'), loadImage('https://tile.openstreetmap.org/19/275637/187569.png'), loadImage('https://tile.openstreetmap.org/19/275638/187569.png'), loadImage('https://tile.openstreetmap.org/19/275636/187570.png'), loadImage('https://tile.openstreetmap.org/19/275637/187570.png'), loadImage('https://tile.openstreetmap.org/19/275638/187570.png')];
@@ -122,7 +126,6 @@ function mousePressed() {
     puzzle_array[mpos] = 0;
   }
   if (win) {
-    console.log('win!!!')
     //open twitter
     if ((mouseX > 0 * dis + dis_int) && (mouseX < 1 * dis + dis_int) &&
       (mouseY > 1 * dis + dis_int) && (mouseY < 2 * dis + dis_int)) {
@@ -143,6 +146,7 @@ function mousePressed() {
 function check_win() {
 
   if (getInvCount(puzzle_array.filter((element) => element > 0)) == 0 && pos0 == 0) {
+    image(twitter, 0 * dis + dis_int,1 * dis + dis_int,dis-dis_int*2,dis-dis_int*2)
     win = true
     control = false;
     textSize(dim / 30)
