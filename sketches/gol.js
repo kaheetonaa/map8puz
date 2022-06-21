@@ -12,14 +12,24 @@ var sat_img = [];
 let timer = 0;
 var dis, dis_int;
 let challenge
+let params
+
 //https://services.digitalglobe.com/earthservice/tmsaccess/tms/1.0.0/DigitalGlobe:ImageryTileService@EPSG:3857@jpg/19/275635/336717.jpg?connectId=c2cbd3f2-003a-46ec-9e46-26a3996d6484
 
 function preload() {
-  challenge = loadTable('challenge.csv', 'csv', 'header');
-  let params = getURLParams();
-  let tilex = params.x;
-  let tiley = params.y;
-  let tilez = params.z;
+  challenge = loadTable('https://raw.githubusercontent.com/kaheetonaa/map8puz/main/challenge.csv', 'csv','header');
+
+
+  //img = [loadImage('https://raw.githubusercontent.com/kaheetonaa/map8puz/main/images/00.png'), loadImage('https://tile.openstreetmap.org/19/275637/187568.png'), loadImage('https://tile.openstreetmap.org/19/275638/187568.png'), loadImage('https://tile.openstreetmap.org/19/275636/187569.png'), loadImage('https://tile.openstreetmap.org/19/275637/187569.png'), loadImage('https://tile.openstreetmap.org/19/275638/187569.png'), loadImage('https://tile.openstreetmap.org/19/275636/187570.png'), loadImage('https://tile.openstreetmap.org/19/275637/187570.png'), loadImage('https://tile.openstreetmap.org/19/275638/187570.png')];
+}
+
+function setup() {
+  params = getURLParams();
+  print(challenge.get(params.challenge,2))
+  document.title="Map-8-puz Challenge #"+params.challenge
+  let tilex = challenge.get(params.challenge,1);
+  let tiley = challenge.get(params.challenge,2);
+  let tilez = challenge.get(params.challenge,3);
   //document.title=tilex
   for (let ty = parseInt(tiley); ty < parseInt(tiley) + 3; ty++) {
     for (let tx = parseInt(tilex); tx < parseInt(tilex) + 3; tx++) {
@@ -32,11 +42,6 @@ function preload() {
 
   //https://services.digitalglobe.com/earthservice/tmsaccess/tms/1.0.0/DigitalGlobe:ImageryTileService@EPSG:3857@jpg/{z}/{x}/{y}.jpg?connectId=c2cbd3f2-003a-46ec-9e46-26a3996d6484&flipy=true
   img[0] = loadImage('https://raw.githubusercontent.com/kaheetonaa/map8puz/main/images/00.png');
-
-  //img = [loadImage('https://raw.githubusercontent.com/kaheetonaa/map8puz/main/images/00.png'), loadImage('https://tile.openstreetmap.org/19/275637/187568.png'), loadImage('https://tile.openstreetmap.org/19/275638/187568.png'), loadImage('https://tile.openstreetmap.org/19/275636/187569.png'), loadImage('https://tile.openstreetmap.org/19/275637/187569.png'), loadImage('https://tile.openstreetmap.org/19/275638/187569.png'), loadImage('https://tile.openstreetmap.org/19/275636/187570.png'), loadImage('https://tile.openstreetmap.org/19/275637/187570.png'), loadImage('https://tile.openstreetmap.org/19/275638/187570.png')];
-}
-
-function setup() {
   frameRate(12);
   pos0 = puzzle_array.findIndex((element) => element < 1);
   let mouse_pos = [0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -121,7 +126,7 @@ function mousePressed() {
     //open twitter
     if ((mouseX > 0 * dis + dis_int) && (mouseX < 1 * dis + dis_int) &&
       (mouseY > 1 * dis + dis_int) && (mouseY < 2 * dis + dis_int)) {
-      window.open("https://twitter.com/intent/tweet?text=I%27ve%20just%20win%20Map8puz%20challenge%20in%20only%20%22" + timer + "%22second%21%20Challenge%20yourself%20at%3A%20https%3A%2F%2Fkaheetonaa.github.io%2Fmap8puz%2Findex.html%3Fx%3D17583%26y%3D13209%26z%3D15");
+      window.open("https://twitter.com/intent/tweet?text=I%27ve%20just%20win%20Map8puz%20challenge%23"+params.challenge+"%20in%20only%20" + timer + "second%21%20Challenge%20yourself%20at%3A%20https%3A%2F%2Fkaheetonaa.github.io%2Fmap8puz%2Findex.html%3Fx%3D17583%26y%3D13209%26z%3D15.%20Challenge%20constributed%20by%20%40"+challenge.get(params.challenge,4));
     }
     if ((mouseX > 1 * dis + dis_int) && (mouseX < 2 * dis + dis_int) &&
       (mouseY > 1 * dis + dis_int) && (mouseY < 2 * dis + dis_int)) {

@@ -1,14 +1,22 @@
 var img = [];
 var sat_img = [];
-var tilex, tiley,tilez;
+var tilex, tiley, tilez;
+let challenge
+let params
 
 function preload() {
     foreground_img = loadImage('https://raw.githubusercontent.com/kaheetonaa/map8puz/main/images/Intro.png')
+    challenge = loadTable('https://raw.githubusercontent.com/kaheetonaa/map8puz/main/challenge.csv', 'csv','header');
 
-    let params = getURLParams();
-    tilex = params.x;
-    tiley = params.y;
-    tilez = params.z;
+
+}
+
+function setup() {
+    params = getURLParams();
+    document.title = "Map-8-puz Challenge #" + params.challenge
+    let tilex = challenge.get(params.challenge, 1);
+    let tiley = challenge.get(params.challenge, 2);
+    let tilez = challenge.get(params.challenge, 3);
     for (let ty = parseInt(tiley); ty < parseInt(tiley) + 3; ty++) {
         for (let tx = parseInt(tilex); tx < parseInt(tilex) + 3; tx++) {
             img.push(loadImage('https://tile.openstreetmap.org/' + tilez + '/' + tx + '/' + ty + '.png'))
@@ -16,10 +24,6 @@ function preload() {
         }
     }
     img[0] = loadImage('https://raw.githubusercontent.com/kaheetonaa/map8puz/main/images/00.png');
-
-}
-
-function setup() {
     frameRate(12);
     dim = min([windowWidth, windowHeight]);
     createCanvas(dim, dim);
@@ -50,6 +54,6 @@ function decode(number) {
 }
 
 function mousePressed() {
-    window.open("game.html?x="+tilex+"&y="+tiley+"&z="+tilez,"_self");
+    window.open("game.html?challenge=" + params.challenge, "_self");
 }
 
