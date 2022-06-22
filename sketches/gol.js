@@ -29,7 +29,7 @@ function preload() {
 
 function setup() {
   params = getURLParams();
-  print(challenge.get(params.challenge,2))
+
   document.title="Map-8-puz Challenge #"+params.challenge
   let tilex = challenge.get(params.challenge,1);
   let tiley = challenge.get(params.challenge,2);
@@ -129,15 +129,15 @@ function mousePressed() {
     //open twitter
     if ((mouseX > 0 * dis + dis_int) && (mouseX < 1 * dis + dis_int) &&
       (mouseY > 2 * dis + dis_int) && (mouseY < 3 * dis + dis_int)) {
-      window.open("https://twitter.com/intent/tweet?text=I%27ve%20just%20win%20Map8puz%20challenge%23"+params.challenge+"%20in%20only%20" + timer + "second%21%20Challenge%20yourself%20at%3A%20https%3A%2F%2Fkaheetonaa.github.io%2Fmap8puz%2Findex.html%3Fx%3D17583%26y%3D13209%26z%3D15.%20Challenge%20contributed%20by%20%40"+challenge.get(params.challenge,4));
+      window.open("https://twitter.com/intent/tweet?text=I%27ve%20just%20win%20Map8puz%20challenge%23"+params.challenge+"%20in%20only%20" + timer + "second%21%20Challenge%20yourself%20at%3A%20https%3A%2F%2Fkaheetonaa.github.io%2Fmap8puz%2Findex.html%3F%3Fchallenge%3D"+params.challenge+".%20Challenge%20contributed%20by%20%40"+challenge.get(params.challenge,4));
     }
     if ((mouseX > 1 * dis + dis_int) && (mouseX < 2 * dis + dis_int) &&
       (mouseY > 2 * dis + dis_int) && (mouseY < 3 * dis + dis_int)) {
-      window.open("https://www.facebook.com/dialog/share?app_id=366818085567559&href=https%3A%2F%2Fkaheetonaa.github.io%2Fmap8puz%2Findex.html%3Fx%3D17583%26y%3D13209%26z%3D15");
+      window.open("https://www.facebook.com/dialog/share?app_id=366818085567559&href=https%3A%2F%2Fkaheetonaa.github.io%2Fmap8puz%2Findex.html%3Fchallenge%3D"+params.challenge);
     }
     if ((mouseX > 2 * dis + dis_int) && (mouseX < 3 * dis + dis_int) &&
       (mouseY > 2 * dis + dis_int) && (mouseY < 3 * dis + dis_int)) {
-      window.open("https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fkaheetonaa.github.io%2Fmap8puz%2Findex.html%3Fx%3D17583%26y%3D13209%26z%3D15");
+      window.open("https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fkaheetonaa.github.io%2Fmap8puz%2Findex.html%3F%3Fchallenge%3D"+params.challenge);
     }
     //
   }
