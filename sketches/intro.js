@@ -25,7 +25,7 @@ function setup() {
     }
     img[0] = loadImage('https://raw.githubusercontent.com/kaheetonaa/map8puz/main/images/00.png');
     frameRate(12);
-    dim = min([windowWidth, windowHeight]);
+    dim = min([windowWidth, windowHeight]) - 60;
     createCanvas(dim, dim);
 }
 
