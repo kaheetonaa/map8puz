@@ -26,7 +26,9 @@ function setup() {
     img[0] = loadImage('https://raw.githubusercontent.com/kaheetonaa/map8puz/main/images/00.png');
     frameRate(12);
     dim = min([windowWidth, windowHeight]) - 60;
-    createCanvas(dim, dim);
+    var canvas = createCanvas(dim, dim);
+    canvas.parent('sketch-holder');
+    document.getElementById("constributor").innerHTML = "Challenge constributed by @"+challenge.get(params.challenge,4);
 }
 
 function draw() {

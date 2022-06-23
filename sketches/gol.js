@@ -51,14 +51,15 @@ function setup() {
   let mouse_pos = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
   dim = min([windowWidth, windowHeight]) - 60;
-  createCanvas(dim, dim);
+  var canvas = createCanvas(dim, dim);
   puzzle_array = shuffle(puzzle_array);
   inversion = getInvCount(puzzle_array.filter((element) => element > 0));
-
+  canvas.parent('sketch-holder');
+  document.getElementById("constributor").innerHTML = "Challenge constributed by @"+challenge.get(params.challenge,4);
 }
 
 function draw() {
-
+  
   if (frameCount % 12 == 0 && control) { // if the frameCount is divisible by 60, then a second has passed. it will stop at 0
     timer++;
   }

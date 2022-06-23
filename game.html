@@ -5,26 +5,38 @@
   <meta property="og:title" content="Map-8-puz challenge">
   <meta property="og:image" content="https://raw.githubusercontent.com/kaheetonaa/map8puz/main/images/map8puz.png">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/kaheetonaa/map8puz/main/images/map8puz.ico">
+  <link rel="icon" type="image/x-icon"
+    href="https://raw.githubusercontent.com/kaheetonaa/map8puz/main/images/map8puz.ico">
   <style>
-    body
-    {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    touch-action: manipulation;
+    body {
+      position: relative;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      touch-action: manipulation;
+      margin: 0;
     }
   </style>
+
   <div id="wrapper">
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.min.js"></script></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.min.js"></script>
+    </script>
     <script src="sketches/gol.js"></script>
   </div>
+
 </head>
 
 <body>
-  <a href='https://ko-fi.com/A0A0D8YFT' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi5.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a><small>Maxar © 2017 Maxar Technologies| ©OpenStreetMap contributors</small>
+  <center>
+  <small id = "constributor"></small>
+  <div id="sketch-holder"></div>
+  <div>
+    <a href='https://ko-fi.com/A0A0D8YFT' target='_blank'><img height='30' style='border:0px;height:30px;'
+          src='https://cdn.ko-fi.com/cdn/kofi5.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a><small>DigitalGlobe©2017 Maxar Technologies| ©OpenStreetMap contributors</small>
+  </div>
+</center>
+
 </body>
 
 </html>
