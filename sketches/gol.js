@@ -16,6 +16,8 @@ let params
 let twitter,facebook,linkedin
 
 //https://services.digitalglobe.com/earthservice/tmsaccess/tms/1.0.0/DigitalGlobe:ImageryTileService@EPSG:3857@jpg/19/275635/336717.jpg?connectId=c2cbd3f2-003a-46ec-9e46-26a3996d6484
+//http://basemaps.cartocdn.com/light_all/%7Bz%7D/%7Bx%7D/%7By%7D.png
+
 
 function preload() {
   challenge = loadTable('https://raw.githubusercontent.com/kaheetonaa/map8puz/main/challenge.csv', 'csv','header');
@@ -38,7 +40,7 @@ function setup() {
   for (let ty = parseInt(tiley); ty < parseInt(tiley) + 3; ty++) {
     for (let tx = parseInt(tilex); tx < parseInt(tilex) + 3; tx++) {
       img.push(loadImage('https://tile.openstreetmap.org/' + tilez + '/' + tx + '/' + ty + '.png'))
-      sat_img.push(loadImage('https://services.digitalglobe.com/earthservice/tmsaccess/tms/1.0.0/DigitalGlobe:ImageryTileService@EPSG:3857@jpg/' + tilez + '/' + tx + '/' + ty + '.jpg?connectId=c2cbd3f2-003a-46ec-9e46-26a3996d6484&flipy=true'))
+      sat_img.push(loadImage('http://basemaps.cartocdn.com/light_all/' + tilez + '/' + tx + '/' + ty + '.png'))
     }
 
   }
