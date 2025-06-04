@@ -140,7 +140,7 @@ function mousePressed() {
     }
     if ((mouseX > 2 * dis + dis_int) && (mouseX < 3 * dis + dis_int) &&
       (mouseY > 2 * dis + dis_int) && (mouseY < 3 * dis + dis_int)) {
-      window.open("https://www.linkedin.com/sharing/share-offsite/?url=https://kaheetonaa.github.io/map8puz/index.html?challenge%3D"+params.challenge);
+      window.open("https://www.linkedin.com/sharing/share-offsite/?url=https://kaheetonaa.github.io/map8puz/index.html?challenge%3D"+params.challenge+"&text=I%27ve%20just%20win%20Map8puz%20challenge%23"+params.challenge+"%20in%20only%20" + timer + "seconds%21%20Challenge%20yourself%20at%3A%20https%3A%2F%2Fkaheetonaa.github.io%2Fmap8puz%2Findex.html%3Fchallenge%3D"+params.challenge+".%20Challenge%20contributed%20by%20%40"+challenge.get(params.challenge,4));
     }
     //
   }
