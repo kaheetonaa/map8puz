@@ -20,7 +20,7 @@ function setup() {
     for (let ty = parseInt(tiley); ty < parseInt(tiley) + 3; ty++) {
         for (let tx = parseInt(tilex); tx < parseInt(tilex) + 3; tx++) {
             img.push(loadImage('https://tile.openstreetmap.org/' + tilez + '/' + tx + '/' + ty + '.png'))
-            sat_img.push(loadImage('https://services.digitalglobe.com/earthservice/tmsaccess/tms/1.0.0/DigitalGlobe:ImageryTileService@EPSG:3857@jpg/' + tilez + '/' + ty + '/' + tx))
+            sat_img.push(loadImage('https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/tile/' + tilez + '/' + ty + '/' + tx))
         }
     }
     img[0] = loadImage('https://raw.githubusercontent.com/kaheetonaa/map8puz/main/images/00.png');
