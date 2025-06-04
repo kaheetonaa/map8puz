@@ -40,7 +40,7 @@ function setup() {
   for (let ty = parseInt(tiley); ty < parseInt(tiley) + 3; ty++) {
     for (let tx = parseInt(tilex); tx < parseInt(tilex) + 3; tx++) {
       img.push(loadImage('https://tile.openstreetmap.org/' + tilez + '/' + tx + '/' + ty + '.png'))
-      sat_img.push(loadImage('https://basemaps.cartocdn.com/light_all/' + tilez + '/' + tx + '/' + ty + '.png'))
+      sat_img.push(loadImage('https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/tile/' + tilez + '/' + tx + '/' + ty))
     }
 
   }
